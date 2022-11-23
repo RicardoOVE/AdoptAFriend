@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/adminproductos", {
+mongoose.connect("mongodb://localhost/adoptafriend", {
     useNewUrlParser: true,
 	useUnifiedTopology: true
 })
-    .then(()=> console.log("Conectado a DB"))
-    .catch(err => console.log("Error al conectarse con DB", err))
+    .then(()=> console.log("Connecting to the DB (server)"))
+    .catch(err => console.log("Error connecting to the DB (server)", err))
