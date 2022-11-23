@@ -13,6 +13,9 @@ const PetSchema = new mongoose.Schema({
     description: {
         type: String
     },
+    pettype: {
+        type: String
+    },
     breed: {
         type: String
     },
