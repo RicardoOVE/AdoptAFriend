@@ -4,6 +4,12 @@ import {Link, useHistory} from "react-router-dom";
 
 const LandingPage = () => {
 
+    return (
+        <div>
+            
+        </div>
+    )
+
 }
 
 export default LandingPage;
