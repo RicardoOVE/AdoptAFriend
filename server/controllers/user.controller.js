@@ -1,5 +1,5 @@
 const Usuario = require("../models/user.model");
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); // npm install jsonwebtoken
 const secret_key = "This is my secret key";
 
 const bcrypt = require('bcrypt');
