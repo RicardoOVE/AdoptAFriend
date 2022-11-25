@@ -24,6 +24,7 @@ module.exports.get_cats = (req, res) => {
         .catch(err => res.json({message: "Error: "+err}));
 }
 
+// City + Type of pet search bar
 module.exports.search_bar = (req, res) => {
     Pet.createIndexes({name: "text", description: "text", breed: "text", age: "text", size: "text", gender: "text"})
     Pet.find( {$text: {$search: "texto a buscar"} } )
