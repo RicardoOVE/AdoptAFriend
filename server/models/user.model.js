@@ -27,6 +27,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
         minlength: [7, "The password must be at least 7 characters long"]
+    },
+    favorited: {
+        type: Array
     }
 
 }, {timestamps: true, versionKey: false})
