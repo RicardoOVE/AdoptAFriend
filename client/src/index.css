@@ -33,3 +33,36 @@ code {
   height: 100%;
   width: 100%;
 }
+
+.pettype {
+  width: 160px;
+  height: 150px;
+}
+
+.pettypebox{
+  border: 15px;
+  border-style: double;
+  border-radius: 25px;
+  border-color: #abd3db;
+  
+}
+
+.loginbox {
+  border: 10px;
+  border-style: solid;
+  border-radius: 25px;
+  border-color: #abd3db;
+  
+}
+
+/* 
+"grass": "#bad36d",
+"brown": "#e3cd9c",
+"aqua": "#469487",
+"paleblue": "#abd3db",
+"orange": "#faaf6a",
+"pink": "#faaf6a",
+"pale": "#f8f3df",
+"red": "#dc4d41",
+"labrador": "#fbb540"
+*/

@@ -16,7 +16,6 @@ import dogbanner6 from "../images/dogbanner/6.jpg"
 import dogbanner7 from "../images/dogbanner/7.jpg"
 import dogbanner8 from "../images/dogbanner/8.jpg"
 
-
 const LandingPage = props => {
 
     var bgColors = {
@@ -60,11 +59,12 @@ const LandingPage = props => {
         <div className="container" style={{backgroundColor: bgColors.pale}}>
             <div className="col-14">
             <Navbar expand="lg" className="text-dark" style={{backgroundColor: bgColors.pale}}>
-                <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                <h4 className="font-link ml-4" > AdoptaFriend </h4>
-                <Nav.Link href="#signlogin" className="ml-auto">Sing up / Log in</Nav.Link>
+                <Nav.Link href="/" className="d-flex ">
+                    <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
+                    <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                </Nav.Link>
+                <Nav.Link href="/signlogin" className="ml-auto text-dark">Sing up / Log in</Nav.Link>
             </Navbar>
-
             <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -85,7 +85,31 @@ const LandingPage = props => {
                     ))}
                 </div>
             </div>
-            <div style={{backgroundColor: bgColors.paleblue, width: "100%", height: "5px"}}></div></div>
+            <div style={{backgroundColor: bgColors.paleblue, width: "100%", height: "30px"}}></div>
+            <div className="d-flex justify-content-center">
+                <div className="pettypebox m-4 p-2">
+                    <a href="/api/dogs"> <img className="pettype" src="/images/icons/dog.png"></img></a>
+                </div>
+                <div className="pettypebox m-4 p-2">
+                    <a href="/api/cats"> <img className="pettype" src="/images/icons/cat.png"></img></a>
+                </div>
+                <div className="pettypebox m-4 p-2">
+                    <a href="/notfound"> <img className="pettype" src="/images/icons/pawprint.png"></img></a>
+                </div>
+            </div>
+
+            <div className="navbar fixed-bottom text-center text-white" style={{backgroundColor: bgColors.paleblue}}>
+                <div className="container pt-3">
+                    <div className="mb-2">
+                        <a className="mx-3" href="https://www.linkedin.com/in/ricardo-ortiz-v/"><img src="/images/icons/linkedin.png" alt="logo" width="30"/></a>
+                        <a className="mx-3" href="https://github.com/RicardoOVE"><img src="/images/icons/github.png" alt="logo" width="30"/></a>
+                    </div>
+                    <div className="text-center text-dark " style={{backgroundColor: bgColors.paleblue}}> 
+                        MERN project for Coding Dojo's Web Development Bootcamp made in 2022 by Ricardo Ortiz
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
         
     )
