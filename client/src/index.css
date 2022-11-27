@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 90px; 
 }
 
 code {
@@ -47,13 +48,22 @@ code {
   
 }
 
+.singinbox {
+  border: 10px;
+  border-style: solid;
+  border-radius: 25px;
+  border-color: #abd3db;
+  padding: 20px 95px 20px 20px;
+}
+
 .loginbox {
   border: 10px;
   border-style: solid;
   border-radius: 25px;
   border-color: #abd3db;
-  
+  padding: 20px 35px 20px 20px;
 }
+
 
 /* 
 "grass": "#bad36d",

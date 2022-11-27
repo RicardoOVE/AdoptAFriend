@@ -33,7 +33,10 @@ module.exports.search_bar = (req, res) => {
 module.exports.create_pet = (req, res) => {
     Pet.create(req.body)
         .then(pet => res.json(pet))
-        .catch(err => res.json({message: "Error: "+err}));
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
 }
 
 module.exports.update_pet = (req, res) => {

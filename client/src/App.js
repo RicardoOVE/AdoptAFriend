@@ -1,7 +1,14 @@
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import AboutUs from './componentes/AboutUs';
+import AddNewPet from './componentes/AddNewPet';
+import AllPets from './componentes/AllPets';
+import CatCare from './componentes/CatCare';
+import DogCare from './componentes/DogCare';
+import Donate from './componentes/Donate';
 
 import LandingPage  from './componentes/LandingPage';
 import NotFound from './componentes/NotFound';
+import PetProfile from './componentes/PetProfile';
 import SignLogin from './componentes/SignLogin';
 
 const App = () => {
@@ -12,6 +19,13 @@ const App = () => {
           <Route path="/" exact render={()=> <LandingPage />} />
           <Route path="/signlogin" render={() => <SignLogin />} />
           <Route path="/notfound" render={() => <NotFound />} />
+          <Route path="/aboutus" render={() => <AboutUs />} />
+          <Route path="/dogcare" render={() => <DogCare />} />
+          <Route path="/catcare" render={() => <CatCare />} />
+          <Route path="/donate" render={() => <Donate />} />
+          <Route path="/allpets/:pettype" render={() => <AllPets />} />
+          <Route path="/addnewpet" render={() => <AddNewPet />} />
+          <Route path="/pet/:id" render={() => <PetProfile />} />
         </Switch>
       </BrowserRouter>
     </div>

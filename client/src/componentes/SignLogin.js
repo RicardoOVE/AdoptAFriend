@@ -7,7 +7,7 @@ import {Link, useHistory} from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-const SignLogin = props => {
+const SignLogin = () => {
 
     var bgColors = {
         "grass": "#bad36d",
@@ -37,7 +37,6 @@ const SignLogin = props => {
 
     const registro = e => {
         e.preventDefault();
-
         axios.post('http://localhost:8000/api/register',{
             firstName,
             lastName,
@@ -68,69 +67,70 @@ const SignLogin = props => {
     }
 
     return (
-        <div className="container" style={{backgroundColor: bgColors.pale}}>
-            <div className="col-14">
-            <Navbar expand="lg" className="text-dark" style={{backgroundColor: bgColors.pale}}>
-                <Nav.Link href="/" className="d-flex ">
-                    <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                    <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
-                </Nav.Link>
-                <Nav.Link href="/signlogin" className="ml-auto text-dark">Sing up / Log in</Nav.Link>
-            </Navbar>
-            <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg">
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="m-auto d-flex justify-content-around">
-                        <Nav.Link href="#dogcare" className="mx-4">Dog Care</Nav.Link>
-                        <Nav.Link href="#catcare" className="mx-4">Cat Care</Nav.Link>
-                        <Nav.Link href="#about" className="mx-4">About us</Nav.Link>
-                        <Nav.Link href="#donate" className="mx-4">Donate</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
+        <div className="w-100" style={{backgroundColor: bgColors.pale}}>
+            <Navbar expand="lg" className="text-dark fixed-top d-flex flex-column" style={{backgroundColor: bgColors.pale}}>
+                <div className="d-flex flex-row w-75 align-items-center">
+                    <Nav.Link href="/" className="d-flex">
+                        <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                    </Nav.Link>
+                </div>
+                
+                <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg" className="w-100">
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="m-auto d-flex justify-content-around">
+                            <Nav.Link href="https://greatergood.org/blog/misc/5-reasons-to-adopt-not-shop" className="mx-4">About Adoption</Nav.Link>
+                            <Nav.Link href="/dogcare" className="mx-4">Dog Care</Nav.Link>
+                            <Nav.Link href="/catcare" className="mx-4">Cat Care</Nav.Link>
+                            <Nav.Link href="/aboutus" className="mx-4">About us</Nav.Link>
+                            <Nav.Link href="/donate" className="mx-4">Donate</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
             </Navbar>
 
-            <div className="row">
-                <form onSubmit={registro} className="loginbox d-flex">
-                    <div className="col-5">
+            <div className="row mt-5 pt-5">
+                <form onSubmit={registro} className="singinbox d-flex">
+                    <div className="col-7">
                         <div className="form-group">
                             <label htmlFor="firstName">Name</label>
-                            <input  type="text" name="firstName"    id="firstName" className="form-control" value={firstName} onChange={e=> setFirstName(e.target.  value)}/>
-                            {errorRegistro.firstName ? <span    className="text-danger">   {errorRegistro.firstName.   message}</span> : null}
+                            <input  type="text" name="firstName" id="firstName" className="form-control" value={firstName} onChange={e=> setFirstName(e.target.value)}/>
+                            {errorRegistro.firstName ? <span className="text-danger"> {errorRegistro.firstName.message}</span> : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="lastName">Last name</label>
-                            <input type="text" name="lastName" id="lastName"        className="form-control" value={lastName} onChange= {e=>    setLastName(e.target.value)}  />
-                            {errorRegistro.lastName ? <span     className="text-danger">    {errorRegistro.lastName.    message}</span> : null}
+                            <input type="text" name="lastName" id="lastName" className="form-control" value={lastName} onChange={e=> setLastName(e.target.value)}/>
+                            {errorRegistro.lastName ? <span className="text-danger"> {errorRegistro.lastName.message}</span> : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="city">City</label>
-                            <input type="city" name="city" id="city"        className="form-control" value={city} onChange= {e=>    setCity(e.target.value)}  />
-                            {errorRegistro.city ? <span     className="text-danger">    {errorRegistro.city.    message}</span> : null}
+                            <input type="city" name="city" id="city" className="form-control" value={city} onChange= {e=> setCity(e.target.value)}/>
+                            {errorRegistro.city ? <span className="text-danger"> {errorRegistro.city.message}</span> : null}
                         </div>
                     </div>
-                    <div className="col-5">
+                    <div className="col-7">
                         <div className="form-group">
                             <label htmlFor="email">email</label>
-                            <input type="email" name="email" id="email"         className="form-control" value={email} onChange=    {e=>    setEmail(e.target.value)}  />
-                            {errorRegistro.email ? <span    className="text-danger">   {errorRegistro.email.   message}</span> : null}
+                            <input type="email" name="email" id="email" className="form-control" value={email} onChange={e=> setEmail(e.target.value)}/>
+                            {errorRegistro.email ? <span className="text-danger"> {errorRegistro.email.message}</span> : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="password" name="password"  id="password"    className="form-control" value= {password} onChange={e=>    setPassword(e.target.    value)}  />
-                            {errorRegistro.password ? <span     className="text-danger">    {errorRegistro.password.    message}</span> : null}
+                            <input type="password" name="password"  id="password" className="form-control" value= {password} onChange={e=> setPassword(e.target.value)}/>
+                            {errorRegistro.password ? <span className="text-danger"> {errorRegistro.password.message}</span> : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="confirmPassword">Confirm password</label>
-                            <input type="password" name="confirmPassword"       id="confirmPassword" className="form-control" value=    {confirmPassword} onChange={e=> setConfirmPassword(e.     target.value)}  />
-                            {errorRegistro.confirmPassword ? <span      className="text-danger">{errorRegistro. confirmPassword.  message}</span> : null}
+                            <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={confirmPassword} onChange={e=> setConfirmPassword(e.target.value)}/>
+                            {errorRegistro.confirmPassword ? <span className="text-danger">{errorRegistro.confirmPassword.message}</span> : null}
                         </div>
+                    <input type="submit" value="Sign up" className="btn btn-secondary mb-4" />
                     </div>
-                    
-                    <input type="submit" value="Sign up" className="btn btn-secondary" />
                 </form>
-                <div className="col-1"></div>
+                <div className="col-2"></div>
                 <div className="loginbox">
-                    <form onSubmit={login} className="col-6">
+                    <form onSubmit={login} className="col-12">
                         <div className="form-group">
                             <label htmlFor="emailLogin">email</label>
                             <input type="email" name="emailLogin" id="emailLogin" className="form-control" value={emailLogin} onChange={e=>setEmailLogin(e.target.value)} />
@@ -159,8 +159,6 @@ const SignLogin = props => {
                 </div>
             </div>
             </div>
-        </div>
-        
     )
 }
 
