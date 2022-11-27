@@ -45,13 +45,12 @@ UserSchema.pre('validate', function(next) {
     if(this.password != this.confirmPassword) {
         this.invalidate('confirmPassword', 'Password must match');
     }
-
     next();
 });
 
 //Encrypt the password before saving the user
 UserSchema.pre('save', function(next){
-    bcrypt.hash(this.password, 10) //10 -> hash times
+    bcrypt.hash(this.password, 10)                //10 -> hash times
         .then(hash => {
             this.password = hash;
             next();

@@ -49,7 +49,7 @@ const AboutUs = props => {
 
             <div className="container mt-5 pt-5 ">
                 <div className="row">
-                    <div className="col border border-warning p-4 text-center">
+                    <div className="col border border-warning p-4 text-justify">
                         <h1 className="mb-5">Adopt a friend: a Coding Dojo' student's Project</h1>
                         <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

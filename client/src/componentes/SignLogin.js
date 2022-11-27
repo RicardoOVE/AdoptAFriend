@@ -7,7 +7,9 @@ import {Link, useHistory} from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-const SignLogin = () => {
+import Cookies from 'react-cookie';
+
+const SignLogin = props => {
 
     var bgColors = {
         "grass": "#bad36d",
@@ -51,7 +53,6 @@ const SignLogin = () => {
 
     const login = e => {
         e.preventDefault();
-
         axios.post('http://localhost:8000/api/login', {
             email: emailLogin,
             password: passwordLogin

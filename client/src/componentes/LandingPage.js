@@ -16,7 +16,53 @@ import dogbanner6 from "../images/dogbanner/6.jpg"
 import dogbanner7 from "../images/dogbanner/7.jpg"
 import dogbanner8 from "../images/dogbanner/8.jpg"
 
+import {isLoggedin} from "./SignLogin";
+
 const LandingPage = props => {
+
+    /*
+    function doesHttpOnlyCookieExist(cookie) {
+        var d = new Date();
+        d.setTime(d.getTime() + (1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cookie + "=new_value;path=/;" + expires
+        let isUserLoggedin = document.cookie.indexOf(cookie + '=') == -1
+        return console.log(isUserLoggedin);
+    }
+
+    let usertoken = 'usertoken'
+    
+    useEffect(() =>{
+        doesHttpOnlyCookieExist(usertoken)
+    },[])
+    
+
+    const [errorSession, setErrorSession] = useState({});
+
+    const loggedIn = () => {
+        axios.get('http://localhost:8000/api/loggedin', {
+        })
+            .then(res => {
+                if(res.data.error) {
+                    setTimeout(() =>{
+                        setErrorSession(res.data.message)
+                    }, 100)
+                    
+                } else {
+                    setTimeout(() =>{
+                        setErrorSession({})
+                    }, 100)
+                }
+            })
+            .catch(err => {
+                console.log('nothing jeje')
+            });
+    }
+
+    useEffect(() =>{
+        loggedIn()
+    },[])
+    */
 
     var bgColors = {
         "grass": "#bad36d",
@@ -48,7 +94,6 @@ const LandingPage = props => {
             })
         }
     }
-    
 
     function resetTimeout() {
         if (timeoutRef.current) {
@@ -87,10 +132,11 @@ const LandingPage = props => {
                         <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                     <div className="ml-auto d-flex row">
+                        
                         <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
                         <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
                         <div>
-                            <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
+                            <a href="/favorited" className="mx-3"> <img style={{width:'2rem'}} src="/images/icons/heart.png"></img></a>
                         </div>
                     </div>
                 </div>

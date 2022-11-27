@@ -22,8 +22,7 @@ const AllPets = () => {
     };
 
     const {pettypes} = useParams();
-
-    const [pets, setPets] =useState([])
+    const [pets, setPets] = useState([])
 
     const history = useHistory();
 

@@ -37,13 +37,24 @@ module.exports.login = (req, res) => {
                                     httpOnly: true
                                 })
                                 .json({error: false, message: "successful login"})
-
                         } else {
                             res.json({error: true, message: "wrong password"});
                         }
                     })
             }
         })
+}
+
+module.exports.addfavorite = (req, res) => {
+    Usuario.findByIdAndUpdate({_id: req.params.id}, req.body, {new:true})
+    .then(usuario => res.json(usuario))
+    .catch(err => res.status(400).json(err));
+}
+
+module.exports.get_user = (req, res) => {
+    Usuario.findOne({_id: req.params.id})
+        .then(usuario => res.json(usuario))
+        .catch(err => res.json({message: "Error: "+err}));
 }
 
 module.exports.logout = (req, res) => {

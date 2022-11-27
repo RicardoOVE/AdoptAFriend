@@ -50,7 +50,7 @@ const CatCare = props => {
                 <div className="embed-responsive embed-responsive-16by9 col">
                     <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/IKR6FPerXes" allowfullscreen></iframe>
                 </div>
-                <div className="col text-center m-4">
+                <div className="col text-justify m-4">
                     <h2 className="mb-3">How to care for a cat:</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis convallis convallis tellus id interdum velit laoreet id. Feugiat nisl pretium fusce id velit ut. Et netus et malesuada fames ac turpis egestas integer. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Semper quis lectus nulla at volutpat diam. Enim ut tellus elementum sagittis. Ornare suspendisse sed nisi lacus sed viverra tellus in hac. Vel pretium lectus quam id leo. Tempus urna et pharetra pharetra massa massa ultricies mi. Morbi tristique senectus et netus et malesuada fames. Tortor aliquam nulla facilisi cras fermentum odio eu. Sed tempus urna et pharetra.

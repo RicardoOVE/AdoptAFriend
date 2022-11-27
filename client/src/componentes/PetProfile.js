@@ -73,7 +73,21 @@ const PetProfile = () => {
             })
             
     }, [id, history])
+    /*
+    useEffect(()=> {
+        axios.get("http://localhost:8000/api/user/" + id)
+    })
 
+    const favoritePet = e => {
+        e.preventDefault();
+        axios.put('http://localhost:8000//api/favorite/'+ id, {
+
+        })
+    }
+    */
+    useEffect(()=> {
+        console.log(id)
+    })
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>
             <Navbar expand="lg" className="text-dark fixed-top d-flex flex-column" style={{backgroundColor: bgColors.pale}}>
@@ -117,7 +131,7 @@ const PetProfile = () => {
                     <div className="container mt-2">
                         <div className="row">
                             <div className="col text-center">
-                                <p>## times favorited</p>
+                                <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
                                 <p>Breed: {breed}</p>
                                 <p>Age: {age}</p>
                                 <p>Size: {size}</p>
