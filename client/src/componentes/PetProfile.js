@@ -75,31 +75,37 @@ const PetProfile = () => {
     }, [id, history])
 
     return (
-        <div className="container" style={{backgroundColor: bgColors.pale}}>
-            <div className="col-14">
-            <Navbar expand="lg" className="text-dark" style={{backgroundColor: bgColors.pale}}>
-                <Nav.Link href="/" className="d-flex ">
-                    <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                    <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
-                </Nav.Link>
-                <div className="ml-auto d-flex row">
-                    <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
-                    <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
+        <div className="w-100" style={{backgroundColor: bgColors.pale}}>
+            <Navbar expand="lg" className="text-dark fixed-top d-flex flex-column" style={{backgroundColor: bgColors.pale}}>
+                <div className="d-flex flex-row w-75 align-items-center">
+                    <Nav.Link href="/" className="d-flex">
+                        <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
+                    </Nav.Link>
+                    <div className="ml-auto d-flex row">
+                        <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
+                        <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
+                        <div>
+                            <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
+                        </div>
+                    </div>
                 </div>
-            </Navbar>
-            <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg">
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="m-auto d-flex justify-content-around">
-                        <Nav.Link href="/dogcare" className="mx-4">Dog Care</Nav.Link>
-                        <Nav.Link href="/catcare" className="mx-4">Cat Care</Nav.Link>
-                        <Nav.Link href="/aboutus" className="mx-4">About us</Nav.Link>
-                        <Nav.Link href="/donate" className="mx-4">Donate</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
+                
+                <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg" className="w-100">
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="m-auto d-flex justify-content-around">
+                            <Nav.Link href="https://greatergood.org/blog/misc/5-reasons-to-adopt-not-shop" className="mx-4">About Adoption</Nav.Link>
+                            <Nav.Link href="/dogcare" className="mx-4">Dog Care</Nav.Link>
+                            <Nav.Link href="/catcare" className="mx-4">Cat Care</Nav.Link>
+                            <Nav.Link href="/aboutus" className="mx-4">About us</Nav.Link>
+                            <Nav.Link href="/donate" className="mx-4">Donate</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
             </Navbar>
 
-            <div className="container mt-5" style={{backgroundColor: bgColors.paleblue}}>
+            <div className="container mt-5 pt-4" style={{backgroundColor: bgColors.paleblue}}>
                 <div className="row">
                     <div className="d-flex flex-column text-center col-6">
                         <img className="card-img-top pt-4" style={{height: '20rem', width: '30rem', objectFit: 'cover'}} src= {image} alt="pet image"></img>
@@ -130,7 +136,7 @@ const PetProfile = () => {
                             <div className="col">
                                 <div>Excercise requirements</div>
                                 <ProgressBar animated now={excercise} label={`${excercise}%`}/>
-                                <div>Friendliness to dogs</div>
+                                <div>Friendliness to other pets</div>
                                 <ProgressBar animated now={friendlinessdogs} label={`${friendlinessdogs}%`}/>
                                 <div>Friendliness to kids</div>
                                 <ProgressBar animated now={friendlinesskids} label={`${friendlinesskids}%`}/>
@@ -156,8 +162,6 @@ const PetProfile = () => {
                 </div>
             </div>
             </div>
-        </div>
-        
     )
 }
 

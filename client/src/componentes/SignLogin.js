@@ -72,7 +72,7 @@ const SignLogin = () => {
                 <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                 </div>
                 

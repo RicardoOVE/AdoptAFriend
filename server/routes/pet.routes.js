@@ -8,6 +8,7 @@ module.exports = (app) => {
     app.get("/api/friend/:id",  PetController.get_pet);
     app.put("/api/update_friend", authenticate, PetController.update_pet);
     app.post("/api/addnewpet", PetController.create_pet);
+    app.get("/api/random", PetController.get_random);
     
     app.post('/api/register', UserController.register);
     app.post('/api/login', UserController.login);

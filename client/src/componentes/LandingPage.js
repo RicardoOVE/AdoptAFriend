@@ -35,6 +35,21 @@ const LandingPage = props => {
     const [index, setIndex] = React.useState(0);
     const timeoutRef = React.useRef(null);
 
+    const [carousel, setCarousel] = useState([])
+
+    const carouselimager = () => {
+        for (let i = 0; i < 8; i++) {
+            axios.get('http://localhost:8000/api/random')
+            .then(response => response.data)
+            .then(data => {
+                let petPhoto = data.image
+                carousel.push(petPhoto)
+                setCarousel(carousel =>[...carousel, petPhoto])
+            })
+        }
+    }
+    
+
     function resetTimeout() {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -69,11 +84,14 @@ const LandingPage = props => {
                 <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
-                    <div className="ml-auto">
+                    <div className="ml-auto d-flex row">
                         <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
                         <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
+                        <div>
+                            <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
+                        </div>
                     </div>
                 </div>
                 
@@ -100,19 +118,40 @@ const LandingPage = props => {
                 </div>
             </div>
             <div style={{backgroundColor: bgColors.paleblue, width: "100%", height: "30px"}}></div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center text-center">
                 <div className="pettypebox m-4 p-2">
-                    <a href="/allpets/dogs"> <img className="pettype" src="/images/icons/dog.png"></img></a>
+                    <a href="/allpets/dogs"> <img className="pettype" src="/images/icons/dog.png"></img><h4 className="text-dark">Dogs</h4></a>
                 </div>
                 <div className="pettypebox m-4 p-2">
-                    <a href="/allpets/cats"> <img className="pettype" src="/images/icons/cat.png"></img></a>
+                    <a href="/allpets/cats"> <img className="pettype" src="/images/icons/cat.png"></img><h4 className="text-dark">Cats</h4></a>
                 </div>
                 <div className="pettypebox m-4 p-2">
-                    <a href="/notfound"> <img className="pettype" src="/images/icons/pawprint.png"></img></a>
+                    <a href="/notfound"> <img className="pettype" src="/images/icons/pawprint.png"></img><h4 className="text-dark">Other pets</h4></a>
                 </div>
                 <div className="pettypebox m-4 p-2">
-                    <a href="/addnewpet"> <img className="pettype" src="/images/icons/add.png"></img></a>
+                    <a href="/addnewpet"> <img className="pettype" src="/images/icons/add.png"></img><h4 className="text-dark">Add pets</h4></a>
                 </div>
+            </div>
+
+            <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                <div className="carousel-inner">
+                    {
+                        carousel.map((pet, index) =>(
+                            <div className="carousel-item" key={index}>
+                                <img src={`${pet}`} className="d-block w-100" alt="dog"></img>
+                            </div>
+                        ))
+                    }
+                    
+                </div>
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden"></span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden"></span>
+                </button>
             </div>
 
             <Navbar expand="lg" style={{backgroundColor: bgColors.paleblue}} className="mt-5">

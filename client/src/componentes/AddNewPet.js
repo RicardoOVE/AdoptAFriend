@@ -26,7 +26,7 @@ const AddNewPet = props => {
 
     const [name, setName] = useState(faker.name.firstName());
     const [image, setImage] = useState("");
-    const [description, setDescription] = useState("A really friendly and awesome pet to have in your house!");
+    const [description, setDescription] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
     const [pettype, setPettype] = useState("");
     const [breed, setBreed] = useState("");
     const [age, setAge] = useState("");
@@ -80,6 +80,19 @@ const AddNewPet = props => {
             })
     }
 
+    const getCatPhoto = () => {
+        axios.get('https://api.thecatapi.com/v1/images/search?api_key=live_DFPV0cDMUQC4hN4EzTRsm2nPITWcF83jZa3WzbftziXkHkLO0O8kEONVidhYENXB')
+            .then(response => response.data)
+            .then(data => {
+                let newresponse = data[0]
+                let catPhoto = newresponse.url;
+                setImage(catPhoto)
+                setTimeout(() => {
+                    savePet()
+                }, 100)
+            })
+    }
+
     const dogFaker = () => {
         setName(faker.name.firstName())
         setPettype("dog")
@@ -102,7 +115,6 @@ const AddNewPet = props => {
 
     const catFaker = () => {
         setName(faker.name.firstName())
-        setImage(faker.image.cats())
         setPettype("cat")
         setBreed(faker.animal.cat())
         setAge(Math.floor(Math.random()*(15 - 2) + 1))
@@ -117,7 +129,7 @@ const AddNewPet = props => {
         setFriendlinesskids(Math.floor(Math.random()*(100 - 20 + 1) + 20))
         setFriendlinessstrangers(Math.floor(Math.random()*(100 - 20 + 1) + 20))
         setTimeout(() => {
-            savePet()
+            getCatPhoto()
         }, 10)
     }
 
@@ -127,7 +139,7 @@ const AddNewPet = props => {
                 <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                 </div>
                 <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg" className="w-100">
@@ -145,14 +157,18 @@ const AddNewPet = props => {
             </Navbar>
 
             <div className="d-flex flex-column my-5 pt-5">
-                <div>
-                    <h3>Add a new Dog using Faker API and Dog API!</h3>
-                    <button onClick={dogFaker} className="btn btn-secondary">Add Dog</button>
+                <div className="addbox m-4 p-2 d-flex">
+                    <h3 className="mt-5 ml-5">Add a new Dog using Faker API and Dog API!</h3>
+                    <button onClick={dogFaker} className="btn btn-secondary mt-5 ml-5" style={{height: '3rem'}}>Add Dog</button>
+                    <img className="pettype ml-4" src="/images/icons/dog2.png"></img>
+                    
                 </div>
-                <div>
-                    <h3>Add a new Cat using Faker API and Cat as a service API (Catass)!</h3>
-                    <button onClick={catFaker} className="btn btn-secondary">Add Cat</button>
-                </div>                
+                <div className="addbox m-4 p-2 d-flex">
+                    <h3 className="mt-5 ml-5">Add a new Cat using Faker API and Cat as a service API (Catass)!</h3>
+                    <button onClick={catFaker} className="btn btn-secondary mt-5 mr-5" style={{height: '3rem'}}>Add Cat</button>
+                    <img className="pettype ml-3 mr-5" src="/images/icons/cat2.png"></img>
+                    
+                </div>         
             </div>
 
                 

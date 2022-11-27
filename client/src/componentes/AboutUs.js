@@ -29,7 +29,7 @@ const AboutUs = props => {
                 <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                 </div>
                 
@@ -47,6 +47,33 @@ const AboutUs = props => {
                 </Navbar>
             </Navbar>
 
+            <div className="container mt-5 pt-5 ">
+                <div className="row">
+                    <div className="col border border-warning p-4 text-center">
+                        <h1 className="mb-5">Adopt a friend: a Coding Dojo' student's Project</h1>
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div className="col">
+                        <div className="text-center mb-4 p-4 border border-warning">
+                            <h3>Contact us</h3>
+                            <a className="mx-3" href="https://www.linkedin.com/in/ricardo-ortiz-v/"><img src="/images/icons/linkedin.png" alt="logo" width="30"/></a>
+                            <a className="mx-3" href="https://github.com/RicardoOVE"><img src="/images/icons/github.png" alt="logo" width="30"/></a>
+                        </div>
+                        <div className="text-center border border-warning p-4">
+                            <h4>Made with</h4>
+                            <img alt="logo" height='150' src='/images/icons/js.png' className="m-2"></img>
+                            <img alt="logo" height='150' src='/images/icons/bootstrap.png'></img>
+                            <img alt="logo" height='250' src='/images/icons/mern.png'></img>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
 
             <div className="navbar fixed-bottom text-center text-white" style={{backgroundColor: bgColors.paleblue}}>
                 <div className="container pt-3">

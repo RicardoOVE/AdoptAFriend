@@ -29,7 +29,7 @@ const CatCare = props => {
                 <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                 </div>
                 <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg" className="w-100">
@@ -46,6 +46,20 @@ const CatCare = props => {
                 </Navbar>
             </Navbar>
 
+            <div className="row mt-5 pt-5">
+                <div className="embed-responsive embed-responsive-16by9 col">
+                    <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/IKR6FPerXes" allowfullscreen></iframe>
+                </div>
+                <div className="col text-center m-4">
+                    <h2 className="mb-3">How to care for a cat:</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis convallis convallis tellus id interdum velit laoreet id. Feugiat nisl pretium fusce id velit ut. Et netus et malesuada fames ac turpis egestas integer. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Semper quis lectus nulla at volutpat diam. Enim ut tellus elementum sagittis. Ornare suspendisse sed nisi lacus sed viverra tellus in hac. Vel pretium lectus quam id leo. Tempus urna et pharetra pharetra massa massa ultricies mi. Morbi tristique senectus et netus et malesuada fames. Tortor aliquam nulla facilisi cras fermentum odio eu. Sed tempus urna et pharetra.
+                    </p>
+                    <p>
+                        Senectus et netus et malesuada fames ac turpis egestas. Enim nunc faucibus a pellentesque sit amet. Nunc scelerisque viverra mauris in aliquam. Imperdiet nulla malesuada pellentesque elit eget gravida cum. Urna molestie at elementum eu facilisis sed. Lobortis mattis aliquam faucibus purus in massa tempor nec feugiat. Nunc aliquet bibendum enim facilisis gravida neque. Semper quis lectus nulla at volutpat diam ut venenatis. Mi tempus imperdiet nulla malesuada pellentesque.
+                    </p>
+                </div>
+            </div>
 
             <div className="navbar fixed-bottom text-center text-white" style={{backgroundColor: bgColors.paleblue}}>
                 <div className="container pt-3">

@@ -12,6 +12,12 @@ module.exports.get_pet = (req, res) => {
         .catch(err => res.json({message: "Error: "+err}));
 }
 
+module.exports.get_random = (req, res) => {
+    Pet.aggregate([{ $sample: { size: 1 } }])
+        .then(pet => res.json(pet))
+        .catch(err => res.json({message: "Error: "+err}));
+}
+
 module.exports.get_dogs = (req, res) => {
     Pet.find({pettype: "dog"})
         .then(pets => res.json(pets))

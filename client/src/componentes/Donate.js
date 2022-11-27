@@ -29,7 +29,7 @@ const Donate = props => {
                 <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                 </div>
                 <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg" className="w-100">
@@ -46,6 +46,40 @@ const Donate = props => {
                 </Navbar>
             </Navbar>
 
+            <div className="container mt-5 pt-5">
+                <div className="row text-center">
+                    <div className="col">
+                        <div className="donationbox" >
+                            <a href="https://www.worldanimalprotection.org/?gclid=Cj0KCQiAj4ecBhD3ARIsAM4Q_jHbYpbxGXe4yIXS8BnmMEGsfVKcJKIbo6Trumh2PMQfl95lOgdtUmIaAs_EEALw_wcB"> <img src="/images/donation/worldanimalprotection.svg" className="donation"></img></a>
+                            <h3>World Animal Protection</h3>
+                        </div>
+                        <div className="donationbox" >
+                            <a href="https://www.soidog.org/content/make-donation"> <img src="/images/donation/soidog.png" className="donation"></img></a>
+                            <h3>Soi Dog</h3>
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="donationbox" >
+                            <a href="https://www.morrisanimalfoundation.org/"> <img src="/images/donation/morrisanimalfoundation.jpg" className="donation"></img></a>
+                            <h3>Morris Animal Foundation</h3>
+                        </div>
+                        <div className="donationbox" >
+                            <a href="https://www.akcchf.org/"> <img src="/images/donation/akcchf.png" className="donation"></img></a>
+                            <h3>Soi Dog</h3>
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="donationbox" >
+                            <a href="https://www.greymuzzle.org/"> <img src="/images/donation/greymuzzle.png" className="donation"></img></a>
+                            <h3>The Grey Muzzle Organization</h3>
+                        </div>
+                        <div className="donationbox" >
+                            <a href="https://bestfriends.org/"> <img src="/images/donation/bestfriends.jpg" className="donation"></img></a>
+                            <h3>Best Friends</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div className="navbar fixed-bottom text-center text-white" style={{backgroundColor: bgColors.paleblue}}>
                 <div className="container pt-3">

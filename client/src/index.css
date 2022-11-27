@@ -36,8 +36,8 @@ code {
 }
 
 .pettype {
-  width: 160px;
-  height: 150px;
+  width: 140px;
+  height: 130px;
 }
 
 .pettypebox{
@@ -45,7 +45,28 @@ code {
   border-style: double;
   border-radius: 25px;
   border-color: #abd3db;
-  
+}
+
+.donationbox{
+  border: 15px;
+  border-style: double;
+  border-radius: 25px;
+  border-color: #abd3db;
+  height: 280px;
+  margin: 15px;
+  padding: 15px;
+}
+
+.donation {
+  width: 160px;
+  height: 150px;
+}
+
+.addbox{
+  border: 15px;
+  border-style: double;
+  border-radius: 25px;
+  border-color: #abd3db;
 }
 
 .singinbox {
@@ -64,6 +85,9 @@ code {
   padding: 20px 35px 20px 20px;
 }
 
+.card{
+  border-radius: 0px 0px 15px 50px;
+}
 
 /* 
 "grass": "#bad36d",

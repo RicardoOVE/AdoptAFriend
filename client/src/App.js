@@ -5,6 +5,7 @@ import AllPets from './componentes/AllPets';
 import CatCare from './componentes/CatCare';
 import DogCare from './componentes/DogCare';
 import Donate from './componentes/Donate';
+import FavoritedPets from './componentes/FavoritedPets';
 
 import LandingPage  from './componentes/LandingPage';
 import NotFound from './componentes/NotFound';
@@ -23,9 +24,10 @@ const App = () => {
           <Route path="/dogcare" render={() => <DogCare />} />
           <Route path="/catcare" render={() => <CatCare />} />
           <Route path="/donate" render={() => <Donate />} />
-          <Route path="/allpets/:pettype" render={() => <AllPets />} />
+          <Route path="/allpets/:pettypes" render={() => <AllPets />} />
           <Route path="/addnewpet" render={() => <AddNewPet />} />
           <Route path="/pet/:id" render={() => <PetProfile />} />
+          <Route path="/favorited" render={() => <FavoritedPets />} />
         </Switch>
       </BrowserRouter>
     </div>

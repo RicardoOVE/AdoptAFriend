@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 
 //import Container from 'react-bootstrap/Container';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -21,13 +21,14 @@ const AllPets = () => {
         "labrador": "#fbb540"
     };
 
+    const {pettypes} = useParams();
+
     const [pets, setPets] =useState([])
-    const [pettype, setPettype] = useState(pettype)
 
     const history = useHistory();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/dogs", {withCredentials: true})
+        axios.get("http://localhost:8000/api/" + pettypes, {withCredentials: true})
             .then(res => setPets(res.data))
             .catch(err => {
                 if(err.response.status === 401) {
@@ -48,11 +49,14 @@ const AllPets = () => {
                 <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
-                        <h4 className="font-link ml-2 mt-3 text-dark" > AdoptaFriend </h4>
+                        <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
-                    <div className="ml-auto">
+                    <div className="ml-auto d-flex row">
                         <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
                         <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
+                        <div>
+                            <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
+                        </div>
                     </div>
                 </div>
                 
@@ -70,15 +74,17 @@ const AllPets = () => {
                 </Navbar>
             </Navbar>
             
-            <div className="d-flex row justify-content-between pt-5 mt-5"> 
+            <div className="d-flex row justify-content-between pt-5 mt-5 text-center"> 
                 {
                     pets.map((pet, index)=>(
-                        <div className="card my-4" style={{width: '13rem', height: '30rem'}} key={index}>
-                            <img className="card-img-top" style={{height: '20rem', width: '13rem', objectFit: 'cover'}} src={pet.image} alt="Card image cap"></img>
+                        <div className="card border-dark my-4" style={{width: '13rem', height: '30rem'}} key={index}>
+                            <img className="card-img-top" style={{height: '18rem', objectFit: 'cover'}} src={pet.image} alt="Card image cap"></img>
                             <div className="card-body">
-                                <h5 className="card-title">{pet.name}</h5>
-                                <p className="card-text">{pet.pettype}: {pet.gender} {pet.breed}</p>
-                                <a href={`/pet/${pet._id}`} className="btn btn-primary">Check this pet</a>
+                                <h5 className="card-title">{pet.name} - {pet.age}</h5>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">{pet.breed}/{pet.gender}</li>
+                                </ul>
+                                <a href={`/pet/${pet._id}`} className="btn btn-outline-dark">Check this pet</a>
                             </div>
                         </div>
                     ))
