@@ -1,6 +1,7 @@
 const PetController = require("../controllers/pet.controller");
 const UserController = require("../controllers/user.controller");
 const {authenticate} = require("../config/jwt.config");
+const Pet = require("../models/pet.model");
 
 module.exports = (app) => {
     // Pet routes
@@ -13,6 +14,7 @@ module.exports = (app) => {
 
     // Favorite routes
     app.put("/api/favorite/:idUsuario", UserController.addfavorite);
+    app.get("/api/favorited/:favoritedIds", PetController.get_favorited);
 
     // User routes
     app.get("/api/user/:id", UserController.get_user);

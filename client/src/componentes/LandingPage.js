@@ -45,7 +45,7 @@ const LandingPage = props => {
             .then(response => response.data)
             .then(data => {
                 let petPhoto = data.image
-                carousel.push(petPhoto)
+                //carousel.push(petPhoto)
                 setCarousel(carousel =>[...carousel, petPhoto])
             })
         }
@@ -104,7 +104,7 @@ const LandingPage = props => {
                             <div className="d-flex flex-row">
                                 <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
                                 <div>
-                                    <a href="/favorited" className="mx-3"> <img style=  {{width:'2rem'}} src="/images/icons/heart.png"></img></a>
+                                    <a href="/favorited" className="mx-3"> <img alt="" style={{width:'2rem'}} src="/images/icons/heart.png"></img></a>
                                 </div>
                             </div>
                         )
@@ -134,19 +134,19 @@ const LandingPage = props => {
                     ))}
                 </div>
             </div>
-            <div style={{backgroundColor: bgColors.paleblue, width: "100%", height: "30px"}}></div>
+            <div style={{backgroundColor: bgColors.paleblue, width: "100%", height: "30px", marginTop: '15px'}}></div>
             <div className="d-flex justify-content-center text-center">
                 <div className="pettypebox m-4 p-2">
-                    <a href="/allpets/dogs"> <img className="pettype" src="/images/icons/dog.png"></img><h4 className="text-dark">Dogs</h4></a>
+                    <a href="/allpets/dogs"> <img alt="" className="pettype" src="/images/icons/dog.png"></img><h4 className="text-dark">Dogs</h4></a>
                 </div>
                 <div className="pettypebox m-4 p-2">
-                    <a href="/allpets/cats"> <img className="pettype" src="/images/icons/cat.png"></img><h4 className="text-dark">Cats</h4></a>
+                    <a href="/allpets/cats"> <img alt="" className="pettype" src="/images/icons/cat.png"></img><h4 className="text-dark">Cats</h4></a>
                 </div>
                 <div className="pettypebox m-4 p-2">
-                    <a href="/notfound"> <img className="pettype" src="/images/icons/pawprint.png"></img><h4 className="text-dark">Other pets</h4></a>
+                    <a href="/notfound"> <img alt="" className="pettype" src="/images/icons/pawprint.png"></img><h4 className="text-dark">Other pets</h4></a>
                 </div>
                 <div className="pettypebox m-4 p-2">
-                    <a href="/addnewpet"> <img className="pettype" src="/images/icons/add.png"></img><h4 className="text-dark">Add pets</h4></a>
+                    <a href="/addnewpet"> <img alt="" className="pettype" src="/images/icons/add.png"></img><h4 className="text-dark">Add pets</h4></a>
                 </div>
             </div>
 

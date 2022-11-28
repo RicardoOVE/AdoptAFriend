@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 90px;
-  padding-bottom: 70px;
+  padding-bottom: 20px;
 }
 
 code {
@@ -34,6 +34,7 @@ code {
   display: inline-block;
   height: 100%;
   width: 100%;
+  padding: 15px;
 }
 
 .pettype {

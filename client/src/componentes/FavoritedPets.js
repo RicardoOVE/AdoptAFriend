@@ -39,7 +39,7 @@ const FavoritedPets = () => {
     const [city, setCity] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [favorited, setFavorited] = useState({})
+    const [favorited, setFavorited] = useState([])
 
     const [errors, setErrors] = useState({});
 
@@ -53,6 +53,12 @@ const FavoritedPets = () => {
                 setPassword(res.data.password);
                 setFavorited(res.data.favorited);
             })
+            .catch(err =>setErrors(err.response.data.errors));
+    }, [idUsuario])
+
+    useEffect(() => {
+        axios.get("http://localhost:800/favorited/"+favorited)
+            .then(res => setFavorited(res.data))
             .catch(err =>setErrors(err.response.data.errors));
     }, [idUsuario])
 
@@ -94,7 +100,20 @@ const FavoritedPets = () => {
             </Navbar>
 
             <div className="d-flex row justify-content-between pt-5 mt-5 text-center"> 
-
+                {
+                    favorited.map((pet, index)=>(
+                        <div className="card border-dark my-4" style={{width: '13rem', height: '30rem'}} key={index}>
+                            <img className="card-img-top" style={{height: '18rem', objectFit: 'cover'}} src={pet.image} alt="Card image cap"></img>
+                            <div className="card-body">
+                                <h5 className="card-title">{pet.name} - {pet.age}</h5>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">{pet.breed}/{pet.gender}</li>
+                                </ul>
+                                <a href={`/pet/${pet._id}`} className="btn btn-outline-dark">Check this pet</a>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
 
             <Navbar expand="lg" style={{backgroundColor: bgColors.paleblue}} className="mt-5">

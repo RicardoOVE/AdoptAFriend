@@ -45,6 +45,12 @@ module.exports.create_pet = (req, res) => {
         });
 }
 
+module.exports.get_favorited = (req, res) => {
+    Pet.find( {_id : {$in : favoritedIds}})
+        .then(pets => res.json(pets))
+        .catch(err => res.status(400).json(err));
+}
+
 module.exports.update_pet = (req, res) => {
     Pet.findOneAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators:true})
         .then(pet => res.json(pet))
