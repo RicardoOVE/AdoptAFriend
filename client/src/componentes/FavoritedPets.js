@@ -7,6 +7,8 @@ import {Link, useHistory} from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import Cookies from 'universal-cookie';
+
 const FavoritedPets = () => {
 
     var bgColors = {
@@ -29,22 +31,54 @@ const FavoritedPets = () => {
             .catch(err => console.log(err));
     }
 
+    const cookies = new Cookies();
+    const idUsuario = null ?? cookies.get('idUsuario');
+
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [city, setCity] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [favorited, setFavorited] = useState({})
+
+    const [errors, setErrors] = useState({});
+
+    useEffect(() =>{
+        axios.get("http://localhost:8000/api/user/"+idUsuario)
+            .then(res => {
+                setFirstName(res.data.firstName);
+                setLastName(res.data.lastName);
+                setCity(res.data.city);
+                setEmail(res.data.email);
+                setPassword(res.data.password);
+                setFavorited(res.data.favorited);
+            })
+            .catch(err =>setErrors(err.response.data.errors));
+    }, [idUsuario])
+
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>
             <Navbar expand="lg" className="text-dark fixed-top d-flex flex-column" style={{backgroundColor: bgColors.pale}}>
-                <div className="d-flex flex-row w-75 align-items-center">
+            <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
                         <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                     <div className="ml-auto d-flex row">
-                        <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
-                        <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
-                        <div>
-                            <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
-                        </div>
+                        {!idUsuario ? (
+                            <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
+                        ) : 
+                        (   
+                            <div className="d-flex flex-row">
+                                <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
+                                <div>
+                                    <a href="/favorited" className="mx-3"> <img style=  {{width:'2rem'}} src="/images/icons/heart.png"></img></a>
+                                </div>
+                            </div>
+                        )
+                        }
                     </div>
-                </div>
+            </div>
                 <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg" className="w-100">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -59,6 +93,9 @@ const FavoritedPets = () => {
                 </Navbar>
             </Navbar>
 
+            <div className="d-flex row justify-content-between pt-5 mt-5 text-center"> 
+
+            </div>
 
             <Navbar expand="lg" style={{backgroundColor: bgColors.paleblue}} className="mt-5">
                 <div className="text-center pt-3 d-flex justify-content-around w-100" style={{backgroundColor: bgColors.paleblue}}>

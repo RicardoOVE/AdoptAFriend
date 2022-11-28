@@ -47,8 +47,8 @@ module.exports.login = (req, res) => {
 
 module.exports.addfavorite = (req, res) => {
     Usuario.findByIdAndUpdate({_id: req.params.id}, req.body, {new:true})
-    .then(usuario => res.json(usuario))
-    .catch(err => res.status(400).json(err));
+        .then(usuario => res.json(usuario))
+        .catch(err => res.json({message: "Error: "+err}));
 }
 
 module.exports.get_user = (req, res) => {

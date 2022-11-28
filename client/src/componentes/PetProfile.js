@@ -8,6 +8,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
+import Cookies from 'universal-cookie';
+
 const PetProfile = () => {
 
     const {id} = useParams();
@@ -73,37 +75,74 @@ const PetProfile = () => {
             })
             
     }, [id, history])
-    /*
-    useEffect(()=> {
-        axios.get("http://localhost:8000/api/user/" + id)
-    })
 
-    const favoritePet = e => {
-        e.preventDefault();
-        axios.put('http://localhost:8000//api/favorite/'+ id, {
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [city, setCity] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [favorited, setFavorited] = useState([])
 
-        })
+    const [favoritedPetId, setFavoritedPetId] = useState('')
+
+    const cookies = new Cookies();
+    const idUsuario = null ?? cookies.get('idUsuario');
+
+    useEffect(() =>{
+        axios.get("http://localhost:8000/api/user/"+idUsuario)
+            .then(res => {
+                setFirstName(res.data.firstName);
+                setLastName(res.data.lastName);
+                setCity(res.data.city);
+                setEmail(res.data.email);
+                setPassword(res.data.password);
+                setFavorited(res.data.favorited);
+            })
+            .catch(err =>setErrors(err.response.data.errors));
+    }, [id])
+
+    const addPet = () =>{
+        let newFavorited = [id]
+        setFavorited(favorited.concat(newFavorited))
+        console.log(favorited)
+        favoritePet()
     }
-    */
-    useEffect(()=> {
-        console.log(id)
-    })
+
+    const favoritePet = () => {
+        axios.put("http://localhost:8000/api/favorite/"+ idUsuario, {
+            firstName,
+            lastName,
+            city,
+            email,
+            password,
+            favorited
+        })
+            .then(res =>history.push('/favorited'))
+    }
+
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>
             <Navbar expand="lg" className="text-dark fixed-top d-flex flex-column" style={{backgroundColor: bgColors.pale}}>
-                <div className="d-flex flex-row w-75 align-items-center">
+            <div className="d-flex flex-row w-75 align-items-center">
                     <Nav.Link href="/" className="d-flex">
                         <img className="ml-1" src="/images/icons/pet-care.png" alt="logo" width="65"/>
                         <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                     <div className="ml-auto d-flex row">
-                        <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
-                        <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
-                        <div>
-                            <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
-                        </div>
+                        {!idUsuario ? (
+                            <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
+                        ) : 
+                        (   
+                            <div className="d-flex flex-row">
+                                <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
+                                <div>
+                                    <a href="/favorited" className="mx-3"> <img style=  {{width:'2rem'}} src="/images/icons/heart.png"></img></a>
+                                </div>
+                            </div>
+                        )
+                        }
                     </div>
-                </div>
+            </div>
                 
                 <Navbar style={{backgroundColor: bgColors.paleblue}} expand="lg" className="w-100">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -131,7 +170,7 @@ const PetProfile = () => {
                     <div className="container mt-2">
                         <div className="row">
                             <div className="col text-center">
-                                <a href="/favorited" className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
+                                <a onClick={addPet} className="mx-3"> <img style={{width: '2rem'}} src="/images/icons/heart.png"></img></a>
                                 <p>Breed: {breed}</p>
                                 <p>Age: {age}</p>
                                 <p>Size: {size}</p>

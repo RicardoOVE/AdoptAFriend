@@ -7,7 +7,8 @@ import {Link, useHistory} from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import Cookies from 'react-cookie';
+import Cookies from 'universal-cookie';
+import jwt_decode from 'jwt-decode';
 
 const SignLogin = props => {
 
@@ -61,6 +62,10 @@ const SignLogin = props => {
                 if(res.data.error) {
                     setErrorLogin(res.data.message);
                 } else {
+                    const cookies = new Cookies()
+                    const notDecodedCookie = cookies.get('usertoken', {path: '/'})
+                    const decodedCookie = jwt_decode(notDecodedCookie)
+                    cookies.set('idUsuario', decodedCookie._id, {path: '/'})
                     history.push('/');
                 }
             })

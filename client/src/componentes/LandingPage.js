@@ -16,53 +16,9 @@ import dogbanner6 from "../images/dogbanner/6.jpg"
 import dogbanner7 from "../images/dogbanner/7.jpg"
 import dogbanner8 from "../images/dogbanner/8.jpg"
 
-import {isLoggedin} from "./SignLogin";
+import Cookies from 'universal-cookie';
 
 const LandingPage = props => {
-
-    /*
-    function doesHttpOnlyCookieExist(cookie) {
-        var d = new Date();
-        d.setTime(d.getTime() + (1000));
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = cookie + "=new_value;path=/;" + expires
-        let isUserLoggedin = document.cookie.indexOf(cookie + '=') == -1
-        return console.log(isUserLoggedin);
-    }
-
-    let usertoken = 'usertoken'
-    
-    useEffect(() =>{
-        doesHttpOnlyCookieExist(usertoken)
-    },[])
-    
-
-    const [errorSession, setErrorSession] = useState({});
-
-    const loggedIn = () => {
-        axios.get('http://localhost:8000/api/loggedin', {
-        })
-            .then(res => {
-                if(res.data.error) {
-                    setTimeout(() =>{
-                        setErrorSession(res.data.message)
-                    }, 100)
-                    
-                } else {
-                    setTimeout(() =>{
-                        setErrorSession({})
-                    }, 100)
-                }
-            })
-            .catch(err => {
-                console.log('nothing jeje')
-            });
-    }
-
-    useEffect(() =>{
-        loggedIn()
-    },[])
-    */
 
     var bgColors = {
         "grass": "#bad36d",
@@ -117,12 +73,17 @@ const LandingPage = props => {
 
     const history = useHistory()
 
+    const cookies = new Cookies();
+    const idUsuario = null ?? cookies.get('idUsuario');
+
     const logout = () => {
+        cookies.remove('idUsuario');
         axios.get('http://localhost:8000/api/logout', {withCredentials:true})
             .then(res => history.push('/'))
             .catch(err => console.log(err));
     }
 
+    
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>
             <Navbar expand="lg" className="text-dark fixed-top d-flex flex-column" style={{backgroundColor: bgColors.pale}}>
@@ -132,12 +93,18 @@ const LandingPage = props => {
                         <h4 className="font-link ml-2 mt-3 text-dark" > Adopt a friend </h4>
                     </Nav.Link>
                     <div className="ml-auto d-flex row">
-                        
-                        <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
-                        <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
-                        <div>
-                            <a href="/favorited" className="mx-3"> <img style={{width:'2rem'}} src="/images/icons/heart.png"></img></a>
-                        </div>
+                        {!idUsuario ? (
+                            <a href="/signlogin" className="btn btn-outline-success ml-2 text-dark">Sing up / Log in</a>
+                        ) : 
+                        (   
+                            <div className="d-flex flex-row">
+                                <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
+                                <div>
+                                    <a href="/favorited" className="mx-3"> <img style=  {{width:'2rem'}} src="/images/icons/heart.png"></img></a>
+                                </div>
+                            </div>
+                        )
+                        }
                     </div>
                 </div>
                 
