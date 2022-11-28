@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import React from "react";
 
 //import Container from 'react-bootstrap/Container';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -20,8 +18,6 @@ const CatCare = props => {
         "red": "#dc4d41",
         "labrador": "#fbb540"
     };
-
-    const history = useHistory();
 
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>
@@ -48,7 +44,7 @@ const CatCare = props => {
 
             <div className="row mt-5 pt-5">
                 <div className="embed-responsive embed-responsive-16by9 col">
-                    <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/IKR6FPerXes" allowfullscreen></iframe>
+                    <iframe title="catCare"className="embed-responsive-item" src="https://www.youtube.com/embed/IKR6FPerXes" allowfullscreen></iframe>
                 </div>
                 <div className="col text-justify m-4">
                     <h2 className="mb-3">How to care for a cat:</h2>

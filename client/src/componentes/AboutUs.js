@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import React from "react";
 
 //import Container from 'react-bootstrap/Container';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -20,8 +18,6 @@ const AboutUs = props => {
         "red": "#dc4d41",
         "labrador": "#fbb540"
     };
-
-    const history = useHistory();
 
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 //import Container from 'react-bootstrap/Container';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -36,9 +36,9 @@ const LandingPage = props => {
     const delay = 6000;
     const [index, setIndex] = React.useState(0);
     const timeoutRef = React.useRef(null);
-
+    
     const [carousel, setCarousel] = useState([])
-
+    
     const carouselimager = () => {
         for (let i = 0; i < 8; i++) {
             axios.get('http://localhost:8000/api/random')
@@ -50,6 +50,10 @@ const LandingPage = props => {
             })
         }
     }
+    
+    useEffect(() =>{
+        carouselimager();
+    }, [])
 
     function resetTimeout() {
         if (timeoutRef.current) {

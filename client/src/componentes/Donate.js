@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import React from "react";
 
 //import Container from 'react-bootstrap/Container';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -20,8 +18,6 @@ const Donate = props => {
         "red": "#dc4d41",
         "labrador": "#fbb540"
     };
-
-    const history = useHistory();
 
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>
@@ -50,31 +46,31 @@ const Donate = props => {
                 <div className="row text-center">
                     <div className="col">
                         <div className="donationbox" >
-                            <a href="https://www.worldanimalprotection.org/?gclid=Cj0KCQiAj4ecBhD3ARIsAM4Q_jHbYpbxGXe4yIXS8BnmMEGsfVKcJKIbo6Trumh2PMQfl95lOgdtUmIaAs_EEALw_wcB"> <img src="/images/donation/worldanimalprotection.svg" className="donation"></img></a>
+                            <a href="https://www.worldanimalprotection.org/?gclid=Cj0KCQiAj4ecBhD3ARIsAM4Q_jHbYpbxGXe4yIXS8BnmMEGsfVKcJKIbo6Trumh2PMQfl95lOgdtUmIaAs_EEALw_wcB"> <img alt="donation page" src="/images/donation/worldanimalprotection.svg" className="donation"></img></a>
                             <h3>World Animal Protection</h3>
                         </div>
                         <div className="donationbox" >
-                            <a href="https://www.soidog.org/content/make-donation"> <img src="/images/donation/soidog.png" className="donation"></img></a>
+                            <a href="https://www.soidog.org/content/make-donation"> <img alt="donation page" src="/images/donation/soidog.png" className="donation"></img></a>
                             <h3>Soi Dog</h3>
                         </div>
                     </div>
                     <div className="col">
                         <div className="donationbox" >
-                            <a href="https://www.morrisanimalfoundation.org/"> <img src="/images/donation/morrisanimalfoundation.jpg" className="donation"></img></a>
+                            <a href="https://www.morrisanimalfoundation.org/"> <img alt="donation page" src="/images/donation/morrisanimalfoundation.jpg" className="donation"></img></a>
                             <h3>Morris Animal Foundation</h3>
                         </div>
                         <div className="donationbox" >
-                            <a href="https://www.akcchf.org/"> <img src="/images/donation/akcchf.png" className="donation"></img></a>
+                            <a href="https://www.akcchf.org/"> <img alt="donation page" src="/images/donation/akcchf.png" className="donation"></img></a>
                             <h3>Soi Dog</h3>
                         </div>
                     </div>
                     <div className="col">
                         <div className="donationbox" >
-                            <a href="https://www.greymuzzle.org/"> <img src="/images/donation/greymuzzle.png" className="donation"></img></a>
+                            <a alt="donation page" href="https://www.greymuzzle.org/"> <img alt="donation page" src="/images/donation/greymuzzle.png" className="donation"></img></a>
                             <h3>The Grey Muzzle Organization</h3>
                         </div>
                         <div className="donationbox" >
-                            <a href="https://bestfriends.org/"> <img src="/images/donation/bestfriends.jpg" className="donation"></img></a>
+                            <a href="https://bestfriends.org/"> <img alt="donation page" src="/images/donation/bestfriends.jpg" className="donation"></img></a>
                             <h3>Best Friends</h3>
                         </div>
                     </div>
