@@ -45,7 +45,6 @@ const LandingPage = props => {
             .then(response => response.data)
             .then(data => {
                 let petPhoto = data.image
-                //carousel.push(petPhoto)
                 setCarousel(carousel =>[...carousel, petPhoto])
             })
         }
@@ -175,16 +174,16 @@ const LandingPage = props => {
                 </div>
             </div>
 
-            {/* 
+            {
             <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div className="carousel-inner">
-                    {
+                    {/*
                         carousel.map((pet, index) =>(
                             <div className="carousel-item" key={index}>
                                 <img src={`${pet}`} className="d-block w-100" alt="dog"></img>
                             </div>
                         ))
-                    }
+                    */}
                     
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -196,7 +195,7 @@ const LandingPage = props => {
                     <span className="visually-hidden"></span>
                 </button>
             </div>
-            */}
+            }
             <Navbar expand="lg" style={{backgroundColor: bgColors.paleblue}} className="mt-5">
                 <div className="text-center pt-3 d-flex justify-content-around w-100" style={{backgroundColor: bgColors.paleblue}}>
                     <div className="mb-2">
