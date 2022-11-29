@@ -160,19 +160,16 @@ const AddNewPet = props => {
                 <div className="addbox m-4 p-2 d-flex">
                     <h3 className="mt-5 ml-5">Add a new Dog using Faker API and Dog API!</h3>
                     <button onClick={dogFaker} className="btn btn-secondary mt-5 ml-5" style={{height: '3rem'}}>Add Dog</button>
-                    <img className="pettype ml-4" src="/images/icons/dog2.png"></img>
+                    <img className="pettype ml-5" src="/images/icons/dog2.png"></img>
                     
                 </div>
                 <div className="addbox m-4 p-2 d-flex">
                     <h3 className="mt-5 ml-5">Add a new Cat using Faker API and Cat as a service API (Catass)!</h3>
-                    <button onClick={catFaker} className="btn btn-secondary mt-5 mr-5" style={{height: '3rem'}}>Add Cat</button>
-                    <img className="pettype ml-3 mr-5" src="/images/icons/cat2.png"></img>
+                    <button onClick={catFaker} className="btn btn-secondary mt-5 mr-3" style={{height: '3rem'}}>Add Cat</button>
+                    <img className="pettype ml-5 mr-5" src="/images/icons/cat2.png"></img>
                     
                 </div>         
             </div>
-
-                
-            
 
             <div className="navbar fixed-bottom text-center text-white" style={{backgroundColor: bgColors.paleblue}}>
                 <div className="container pt-3">

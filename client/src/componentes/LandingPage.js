@@ -26,10 +26,10 @@ const LandingPage = props => {
         "aqua": "#469487",
         "paleblue": "#abd3db",
         "orange": "#faaf6a",
-        "pink": "#faaf6a",
         "pale": "#f8f3df",
         "red": "#dc4d41",
-        "labrador": "#fbb540"
+        "labrador": "#fbb540",
+        "white": "#FFFFFF"
     };
 
     const dogslide = [dogbanner1, dogbanner2, dogbanner3, dogbanner4, dogbanner5, dogbanner6, dogbanner7, dogbanner8];
@@ -104,7 +104,7 @@ const LandingPage = props => {
                             <div className="d-flex flex-row">
                                 <button className="btn btn-outline-danger text-dark" onClick={logout} >Logout</button>
                                 <div>
-                                    <a href="/favorited" className="mx-3"> <img alt="" style={{width:'2rem'}} src="/images/icons/heart.png"></img></a>
+                                    <a href='/favorited/' className="mx-3"> <img alt="" style={{width:'2rem'}} src="/images/icons/heart.png"></img></a>
                                 </div>
                             </div>
                         )
@@ -135,6 +135,31 @@ const LandingPage = props => {
                 </div>
             </div>
             <div style={{backgroundColor: bgColors.paleblue, width: "100%", height: "30px", marginTop: '15px'}}></div>
+            
+            <form className="mt-3 d-flex justify-content-center">
+                <div className="pettypebox">
+                    <select className="btn btn-outline-info">
+                        <option>Animal</option>
+                        <option>Dog</option>
+                        <option>Cat</option>
+                        <option>Other</option>
+                    </select>
+                    <select className="btn btn-outline-info">
+                        <option>City</option>
+                        <option>####</option>
+                        <option>####</option>
+                        <option>####</option>
+                    </select>
+                    <button className="btn btn-outline-info"><img width="20" alt="" src="/images/icons/search.png"></img></button>
+                </div>
+            </form>
+            <h6 className="text-danger text-center">*This form is a work in progress feature*</h6>
+
+            <div className="text-center mt-3">   
+                <h2>Adopt your new best friend!</h2>
+                <h5>Browse pets from our network from local rrescues and shelters</h5>
+            </div>
+            
             <div className="d-flex justify-content-center text-center">
                 <div className="pettypebox m-4 p-2">
                     <a href="/allpets/dogs"> <img alt="" className="pettype" src="/images/icons/dog.png"></img><h4 className="text-dark">Dogs</h4></a>
@@ -150,6 +175,7 @@ const LandingPage = props => {
                 </div>
             </div>
 
+            {/* 
             <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div className="carousel-inner">
                     {
@@ -170,7 +196,7 @@ const LandingPage = props => {
                     <span className="visually-hidden"></span>
                 </button>
             </div>
-
+            */}
             <Navbar expand="lg" style={{backgroundColor: bgColors.paleblue}} className="mt-5">
                 <div className="text-center pt-3 d-flex justify-content-around w-100" style={{backgroundColor: bgColors.paleblue}}>
                     <div className="mb-2">

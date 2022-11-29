@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useHistory, useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 //import Container from 'react-bootstrap/Container';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -83,29 +83,31 @@ const PetProfile = () => {
     const [password, setPassword] = useState("")
     const [favorited, setFavorited] = useState([])
 
-    const [favoritedPetId, setFavoritedPetId] = useState('')
-
     const cookies = new Cookies();
     const idUsuario = null ?? cookies.get('idUsuario');
 
-    useEffect(() =>{
+    useEffect(() => {
         axios.get("http://localhost:8000/api/user/"+idUsuario)
-            .then(res => {
-                setFirstName(res.data.firstName);
-                setLastName(res.data.lastName);
-                setCity(res.data.city);
-                setEmail(res.data.email);
-                setPassword(res.data.password);
-                setFavorited(res.data.favorited);
-            })
-            .catch(err =>setErrors(err.response.data.errors));
-    }, [id])
+        .then(res => {
+            setFirstName(res.data.firstName);
+            setLastName(res.data.lastName);
+            setCity(res.data.city);
+            setEmail(res.data.email);
+            setPassword(res.data.password);
+            setFavorited(res.data.favorited);
+            setFavorited(favorited => [...favorited, id]);
+        })
+    }, [id, history])
 
     const addPet = () =>{
-        let newFavorited = [id]
-        setFavorited(favorited.concat(newFavorited))
-        console.log(favorited)
-        favoritePet()
+        axios.put("http://localhost:8000/api/favorite/"+ idUsuario, {
+            firstName,
+            lastName,
+            city,
+            email,
+            password,
+            favorited
+        })
     }
 
     const favoritePet = () => {
@@ -117,7 +119,7 @@ const PetProfile = () => {
             password,
             favorited
         })
-            .then(res =>history.push('/favorited'))
+        /*.then(res =>history.push('/favorited'))*/
     }
 
     return (

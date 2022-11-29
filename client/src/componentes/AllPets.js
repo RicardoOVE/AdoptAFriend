@@ -85,7 +85,29 @@ const AllPets = () => {
                 </Navbar>
             </Navbar>
             
-            <div className="d-flex row justify-content-between pt-5 mt-5 text-center"> 
+            <form className="mt-5 pt-5 d-flex justify-content-center">
+                <div className="pettypebox">
+                    <select className="btn btn-outline-info">
+                        <option>Breed</option>
+                    </select>
+                    <select className="btn btn-outline-info">
+                        <option>Age</option>
+                    </select>
+                    <select className="btn btn-outline-info">
+                        <option>Gender</option>
+                    </select>
+                    <select className="btn btn-outline-info">
+                        <option>Size</option>
+                    </select>
+                    <select className="btn btn-outline-info">
+                        <option>City</option>
+                    </select>
+                    <button className="btn btn-outline-info"><img width="20" alt="" src="/images/icons/search.png"></img></button>
+                </div>
+            </form>
+            <h6 className="text-danger text-center">*This form is a work in progress feature*</h6>
+
+            <div className="d-flex row justify-content-between pt-1 mt-1 text-center"> 
                 {
                     pets.map((pet, index)=>(
                         <div className="card border-dark my-4" style={{width: '13rem', height: '30rem'}} key={index}>

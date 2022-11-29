@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 //import Container from 'react-bootstrap/Container';
 //import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -34,14 +34,21 @@ const FavoritedPets = () => {
     const cookies = new Cookies();
     const idUsuario = null ?? cookies.get('idUsuario');
 
+    const [loaded, setLoaded] = useState(false)
+
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [city, setCity] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [favorited, setFavorited] = useState([])
+    const [favoritedInfo, setFavoritedInfo] = useState([])
 
     const [errors, setErrors] = useState({});
+
+    const loadFavs = () => {
+        setLoaded(true)
+    }
 
     useEffect(() =>{
         axios.get("http://localhost:8000/api/user/"+idUsuario)
@@ -52,15 +59,18 @@ const FavoritedPets = () => {
                 setEmail(res.data.email);
                 setPassword(res.data.password);
                 setFavorited(res.data.favorited);
+                getFavoritedInfo();
             })
             .catch(err =>setErrors(err.response.data.errors));
-    }, [idUsuario])
+    }, [loaded])
 
-    useEffect(() => {
-        axios.get("http://localhost:800/favorited/"+favorited)
-            .then(res => setFavorited(res.data))
-            .catch(err =>setErrors(err.response.data.errors));
-    }, [idUsuario])
+    const getFavoritedInfo = () => {
+        for (let i = 0; i < favorited.length; i++) {
+            axios.get("http://localhost:8000/api/friend/"+favorited[i])
+                .then(res => setFavoritedInfo(favoritedInfo => [...favoritedInfo, res.data]))
+                .catch(err =>setErrors(err.response.data.errors))
+            }
+    }
 
     return (
         <div className="w-100" style={{backgroundColor: bgColors.pale}}>
@@ -98,18 +108,34 @@ const FavoritedPets = () => {
                     </Navbar.Collapse>
                 </Navbar>
             </Navbar>
+            <div className="d-flex pt-5 mt-5 justify-content-center">
+                <button onClick={loadFavs} className="btn btn-success ">Load Favs</button>
+            </div>
 
-            <div className="d-flex row justify-content-between pt-5 mt-5 text-center"> 
+            <div className="pt-1 mt-2 text-center dflex">
                 {
-                    favorited.map((pet, index)=>(
-                        <div className="card border-dark my-4" style={{width: '13rem', height: '30rem'}} key={index}>
-                            <img className="card-img-top" style={{height: '18rem', objectFit: 'cover'}} src={pet.image} alt="Card image cap"></img>
-                            <div className="card-body">
-                                <h5 className="card-title">{pet.name} - {pet.age}</h5>
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">{pet.breed}/{pet.gender}</li>
-                                </ul>
-                                <a href={`/pet/${pet._id}`} className="btn btn-outline-dark">Check this pet</a>
+                    favoritedInfo.map((pet, index)=>(
+                        <div className="pettypebox row border-dark justify-content-around mb-4" key={index}>
+                            <div className="">
+                                <img className="card-img-top pt-4 pb-4" style={{height: '20rem', width: '30rem', objectFit: 'cover'}} src= {pet.image} alt="pet image"></img>
+                            </div>
+                            
+                            <div className="">
+                                <h2 className="mt-5">{pet.name}</h2>
+                                <div className="row">
+                                    <div className="m-2">
+                                        <p>Breed: {pet.breed}</p>
+                                        <p>Age: {pet.age}</p>
+                                        <p>Size: {pet.size}</p>
+                                        <p>Gender: {pet.gender}</p>
+                                    </div>
+                                    <div className="m-2">
+                                        <p>Contact Number: ########</p>
+                                        <p>email: ########</p>
+                                        <p>Location: ########</p>
+                                        <p>Shelter's Name: ########</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     ))

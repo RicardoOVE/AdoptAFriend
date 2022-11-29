@@ -13,7 +13,7 @@ module.exports = (app) => {
     app.get("/api/random", PetController.get_random);
 
     // Favorite routes
-    app.put("/api/favorite/:idUsuario", UserController.addfavorite);
+    app.put("/api/favorite/:idUsuario", UserController.add_favorite);
     app.get("/api/favorited/:favoritedIds", PetController.get_favorited);
 
     // User routes

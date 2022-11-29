@@ -45,8 +45,8 @@ module.exports.login = (req, res) => {
         })
 }
 
-module.exports.addfavorite = (req, res) => {
-    Usuario.findByIdAndUpdate({_id: req.params.id}, req.body, {new:true})
+module.exports.add_favorite = (req, res) => {
+    Usuario.findByIdAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators: true})
         .then(usuario => res.json(usuario))
         .catch(err => res.json({message: "Error: "+err}));
 }
